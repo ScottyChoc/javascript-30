@@ -1,0 +1,39 @@
+body {
+    background: url('images/crowd.jpg') top center / cover;
+    font-size: 10px;
+    font-family: Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.key {
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+    border: 2px solid #000;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.6rem;
+    font-size: 3rem;
+    transition: 1;
+    box-shadow: 0 0px 5px #000;
+    transition: all 0.07s;
+    text-align: center;
+}
+
+.key span {
+    font-size: 0.8rem;
+    display: block;
+    color: rgb(255, 183, 0);
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: rgb(255, 183, 0);
+    box-shadow: 0 0 10px rgb(255, 183, 0);
+}

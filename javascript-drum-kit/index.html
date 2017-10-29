@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">    
+    <div data-key="65" class="key">a<span>clap</span></div>
+    <div data-key="83" class="key">s<span>cowbell</span></div>
+    <div data-key="68" class="key">d<span>crash</span></div>
+    <div data-key="70" class="key">f<span>hihat</span></div>
+    <div data-key="71" class="key">g<span>kick</span></div>
+    <div data-key="72" class="key">h<span>openhat</span></div>
+    <div data-key="74" class="key">j<span>perc</span></div>
+    <div data-key="75" class="key">k<span>snare</span></div>
+    <div data-key="76" class="key">l<span>tom</span></div>
+</div>
+
+<audio data-key="65" src="sounds/clap.wav"></audio>
+<audio data-key="83" src="sounds/cowbell.wav"></audio>
+<audio data-key="68" src="sounds/crash.wav"></audio>
+<audio data-key="70" src="sounds/hihat.wav"></audio>
+<audio data-key="71" src="sounds/kick.wav"></audio>
+<audio data-key="72" src="sounds/openhat.wav"></audio>
+<audio data-key="74" src="sounds/perc.wav"></audio>
+<audio data-key="75" src="sounds/snare.wav"></audio>
+<audio data-key="76" src="sounds/tom.wav"></audio>
+
+<script>
+    
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if(!audio) return; // stop the function from running
+        audio.currentTime = 0; // rewind to the start
+        audio.play();
+        key.classList.add('playing'); 
+    }
+    
+    function removeTransition(e) {
+        if (e.propertyName !== 'transform') return // skip if it's not a transform
+        this.classList.remove('playing');
+    }
+    
+    
+    const keys = document.querySelectorAll(".key");
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+
+</script>
+
+</body>
+</html>
